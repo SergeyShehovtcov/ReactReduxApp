@@ -1,19 +1,18 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Main from "./main/Main";
+
 import "./app.less";
-import {useDispatch, useSelector} from "react-redux";
-import {setCount} from "../reducers/reposReducer";
 
 const App = () => {
-    const dispath = useDispatch();
-    const count = useSelector(state => state.repos.count);
-    function onCountClick() {
-        dispath(setCount(5));
-    };
     return (
-        <div className="app">
-            <button onClick={() => onCountClick()}>COUNT</button>
-            <div>{count}</div>
-        </div>
+        <Router>
+            <div className="container">
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                </Routes>
+            </div>
+        </Router>
     );
 };
 
